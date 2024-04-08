@@ -18,4 +18,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 </ul>
             </a>
         </li>`).join("")}function K(){new Z(".img-list a",{captionsData:"alt",captionPosition:"bottom",captionDelay:250,animationSpeed:250,animationSlide:!0}).refresh()}const j=document.querySelector(".form"),R=document.querySelector(".img-list"),z=document.querySelector(".loader");j.addEventListener("submit",J);function J(N){N.preventDefault();const O=N.currentTarget.elements.search.value.trim();O!==""&&(R.innerHTML="",z.classList.add("loader--visible"),V(O).then(v=>{console.log(v),R.innerHTML=Q(v.hits),K(),j.reset()}).catch(v=>{B.error({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight",backgroundColor:"#EF4040",messageColor:"#fff"})}).finally(()=>{z.classList.remove("loader--visible")}))}
-//# sourceMappingURL=index-0b5c5895.js.map
+//# sourceMappingURL=index-823793e2.js.map
