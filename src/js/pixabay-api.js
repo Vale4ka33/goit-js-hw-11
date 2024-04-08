@@ -23,9 +23,11 @@ export function searchImage(searchInput = '') {
         .then(data => {
             if (!data.hits || data.hits.length === 0) {
                 iziToast.error({
-                    title: 'Error',
                     message: 'Sorry, there are no images matching your search query. Please try again!',
-                    position: 'topRight'
+                    position: 'topRight',
+                    backgroundColor: '#EF4040',
+                    messageColor: '#fff',
+                    
         });
     }
     return data;

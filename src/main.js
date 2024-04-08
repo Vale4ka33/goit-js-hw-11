@@ -9,7 +9,6 @@ const form = document.querySelector('.form');
 const imgList = document.querySelector('.img-list');
 const loader = document.querySelector('.loader');
 
-
 form.addEventListener('submit', submitForm);
 
 function submitForm(event) {
@@ -19,17 +18,28 @@ function submitForm(event) {
     if (searchInput === '') {
         return;
     }
-    loader.style.display = 'block';
-     imgList.innerHTML = '';
+
+    imgList.innerHTML = '';
+     loader.classList.add('loader--visible');
+
 
     searchImage(searchInput)
-        .then(data => {
-            console.log(data);
-            imgList.innerHTML = createMarkup(data.hits)
-            initLightbox();
-
-            form.reset();
-        })
-        .catch(error => alert(error));
-     loader.style.display = 'none';
+    .then(data => {
+        console.log(data);
+        imgList.innerHTML = createMarkup(data.hits);
+        initLightbox();
+        form.reset();
+    })
+    .catch(error => {
+        iziToast.error({
+                    message: 'Sorry, there are no images matching your search query. Please try again!',
+                    position: 'topRight',
+                    backgroundColor: '#EF4040',
+                    messageColor: '#fff',
+                    
+        });
+    })
+    .finally(() => {
+        loader.classList.remove('loader--visible');
+    });
 }
